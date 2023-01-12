@@ -1,15 +1,16 @@
-import React, {ChangeEvent, KeyboardEvent} from 'react'
+import React, {MouseEvent,FocusEvent,ChangeEvent, KeyboardEvent} from 'react'
 import s from './Greeting.module.css'
+import {pureAddUser} from "./GreetingContainer";
 
 type GreetingPropsType = {
-    name: any // need to fix any
-    setNameCallback: any // need to fix any
-    addUser: any // need to fix any
-    onBlur: any // need to fix any
-    onEnter: any // need to fix any
-    error: any // need to fix any
-    totalUsers: any // need to fix any
-    lastUserName?: any // need to fix any
+    name: string // need to fix any
+    setNameCallback: (e: ChangeEvent<HTMLInputElement>) => void // need to fix any
+    addUser: (e: MouseEvent<HTMLButtonElement>) => void // need to fix any
+    onBlur: (e: FocusEvent<HTMLInputElement>) => void // need to fix any
+    onEnter: (e: KeyboardEvent<HTMLInputElement>) => void // need to fix any
+    error: string // need to fix any
+    totalUsers: number // need to fix any
+    lastUserName?: string // need to fix any
 }
 
 // презентационная компонента (для верстальщика)
@@ -25,7 +26,9 @@ const Greeting: React.FC<GreetingPropsType> = (
         lastUserName,
     } // деструктуризация пропсов
 ) => {
-    const inputClass = s.errorInput // need to fix with (?:)
+
+    // если ошибка(переменная есть - то покажем такой-то класс иначе такой-то класс)
+    const inputClass = error ? s.errorInput : s.some  // need to fix with (?:)
 
     return (
         <div id={'hw3-form'} className={s.greetingForm}>
@@ -71,3 +74,11 @@ const Greeting: React.FC<GreetingPropsType> = (
 }
 
 export default Greeting
+// 1) сначала вводим в инпут буквы - это значение сетаем setName(e.currentTarget.value, введеное имя попадает в переменную name локального стейта,
+// добавляем user - для этого name берем из замыкания
+/* const addUser = (e: MouseEvent<HTMLButtonElement>) => {
+ pureAddUser(name, setError, setName, addUserCallback)
+} */
+
+// 2) если ошибка(переменная есть - то покажем такой-то класс иначе такой-то класс)
+// const inputClass = error ? s.errorInput : s.some
