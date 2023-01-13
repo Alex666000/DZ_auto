@@ -1,20 +1,41 @@
 .input:focus {
-}
+    background-color: #ffd969;
+    border-color: #000;}
 
 .input {
+    width:100%;
+    margin:10px 0;
+    border: 2px solid #031303;
+    border-radius:10px;    font-family:inherit;
+    font-size: inherit;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+
 }
 
 .inputWrapper {
+
 }
 
 .superInput {
+
 }
 
 .errorInput {
+    outline: none;
+    width: 20%;
+    padding: 5px 10px;
+    margin: 3px 0;
+    box-sizing: initial;
+    border: 2px solid crimson;
+    border-radius: 4px;
+    background-color: rgba(250, 209, 192, 0.91);
 }
 
 .errorInput:focus {
 }
 
 .error {
+    display: flex;
+    flex-direction: column;
+    color: red;
 }
