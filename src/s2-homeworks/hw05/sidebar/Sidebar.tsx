@@ -3,6 +3,7 @@ import {NavLink} from 'react-router-dom'
 import s from './Sidebar.module.css'
 import {PATH} from '../Pages'
 import closeIcon from './closeOutline.svg'
+// * 2 - в файле Sidebar.tsx дописать className так чтоб вешался класс s.active когда мы уже на соответствующей странице
 
 type PropsType = {
     open: boolean
@@ -32,6 +33,9 @@ export const Sidebar: FC<PropsType> = ({open, handleClose}) => {
                         to={PATH.PRE_JUNIOR}
                         onClick={handleClose}
                         // className={...} // делает студент
+                        className={({isActive}) => {
+                            return isActive ? s.active : s.noEct
+                        }}
                     >
                         Pre-junior
                     </NavLink>
@@ -40,6 +44,9 @@ export const Sidebar: FC<PropsType> = ({open, handleClose}) => {
                         to={PATH.JUNIOR}
                         onClick={handleClose}
                         // className={...} // делает студент
+                        className={({isActive}) => {
+                            return isActive ? s.active : s.noEct
+                        }}
                     >
                         Junior
                     </NavLink>
@@ -48,6 +55,9 @@ export const Sidebar: FC<PropsType> = ({open, handleClose}) => {
                         to={PATH.JUNIOR_PLUS}
                         onClick={handleClose}
                         // className={...} // делает студент
+                        className={({isActive}) => {
+                            return isActive ? s.active : s.noEct
+                        }}
                     >
                         Junior Plus
                     </NavLink>

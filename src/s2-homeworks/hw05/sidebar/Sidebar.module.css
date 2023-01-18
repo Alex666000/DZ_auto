@@ -13,13 +13,34 @@
 .nav a {
 }
 
-.nav a:hover {
+.nav a:hover::before {
+
+}
+.nav a :hover::after {
+    animation: blink 0.35s ease;
+
 }
 
+
 .nav a.active {
+    background: gold;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 3px;
+    margin: 3px;
+    border: 2px solid black;
+    border-radius: 11%;}
+
+.noEct {
+    color: black;
+    padding: 5px;
+    text-decoration: none;
 }
 .close {
 }
 
 .close img {
 }
+
+
