@@ -1,4 +1,5 @@
 // вот вам функция для сохранения объектов в память браузера
+
 // (данные в этом хранилище сохраняться даже при перезагрузке компа):
 export function saveState<T>(key: string, state: T) {
     const stateAsString = JSON.stringify(state)

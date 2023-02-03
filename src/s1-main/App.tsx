@@ -1,6 +1,6 @@
 import React from "react"
 import s from "./App.module.css"
-import HW10 from "../s2-homeworks/hw10/HW10";
+import HW11 from "../s2-homeworks/hw11/HW11";
 
 function App() {
     return (
@@ -14,7 +14,7 @@ function App() {
           {/*  при выполнении дз 5 и более - закомментировать здесь дз 1-4, так как они есть внутри дз 5*/}
           {/*  <HW5/>*/}
           {/*  <HW6/>*/}
-            <HW10 />
+            <HW11 />
         </div>
     )
 }
