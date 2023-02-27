@@ -1,11 +1,11 @@
-import React from 'react'
-import SuperSelect from '../../../hw07/common/c5-SuperSelect/SuperSelect'
-import {Pagination} from '@mui/material'
-import s from './SuperPagination.module.css'
+import React, {ChangeEvent} from "react"
+import SuperSelect from "../../../hw07/common/c5-SuperSelect/SuperSelect"
+import {Pagination} from "@mui/material"
+import s from "./SuperPagination.module.css"
 
 export type SuperPaginationPropsType = {
     id?: string
-    page: number
+    currentPage: number
     itemsCountForPage: number
     totalCount: number
     onChange: (page: number, count: number) => void
@@ -13,27 +13,38 @@ export type SuperPaginationPropsType = {
 
 const SuperPagination: React.FC<SuperPaginationPropsType> = (
     {
-        page, itemsCountForPage, totalCount, onChange, id = 'hw15',
+        currentPage, itemsCountForPage, totalCount, onChange, id = "hw15",
     }
 ) => {
-    const lastPage = 10 // пишет студент // вычислить количество страниц
+// количество страниц
+    const lastPage =  Math.ceil(totalCount / itemsCountForPage) // пишет студент // вычислить количество страниц
 
-    const onChangeCallback = (event: any, page: number) => {
+    const onChangeCallback = (event: ChangeEvent<any>, currentPage: number) => {
         // пишет студент
+        onChange(currentPage, event.target.value)
     }
 
-    const onChangeSelect = (event: any) => {
+    const onChangeSelect = (event: ChangeEvent<HTMLSelectElement>) => {
         // пишет студент
+        onChange(currentPage, +event.target.value)
     }
 
+    let techValue = [
+        {id: 4, value: 4},
+        {id: 7, value: 7},
+        {id: 10, value: 10},
+    ];
     return (
         <div className={s.pagination}>
             <Pagination
-                id={id + '-pagination'}
+                showFirstButton
+                showLastButton
+                color="primary"
+                id={id + "-pagination"}
                 sx={{
                     // стили для Pagination // пишет студент
                 }}
-                page={page}
+                page={currentPage}
                 count={lastPage}
                 onChange={onChangeCallback}
                 hideNextButton
@@ -45,13 +56,9 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
             </span>
 
             <SuperSelect
-                id={id + '-pagination-select'}
+                id={id + "-pagination-select"}
                 value={itemsCountForPage}
-                options={[
-                    // {id: 4, value: 4},
-                    // {id: 7, value: 7},
-                    // {id: 10, value: 10},
-                ]}
+                options={techValue}
                 onChange={onChangeSelect}
             />
 

@@ -44,6 +44,7 @@ const HW14 = () => {
             })
             .catch((e) => {
                 // console.error(e)
+                alert("error")
                 setTechs([])
             })
     }
